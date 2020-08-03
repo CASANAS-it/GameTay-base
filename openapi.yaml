@@ -1012,16 +1012,29 @@ components:
           x-skaffolder-id-attr: 5f2786ab612fa03a2846a3af
           x-skaffolder-type: Integer
           x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 2
+            - 3
+            - 4
         status:
           type: string
           x-skaffolder-id-attr: 5f2786ab612fa03a2846a3ae
           x-skaffolder-type: String
           x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - Active
+            - Inactive
         transtype:
           type: string
           x-skaffolder-id-attr: 5f2786ab612fa03a2846a3ad
           x-skaffolder-type: String
           x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 2D
+            - PAIR
+            - QUADRO
+            - STL
+            - SWER3
       x-skaffolder-relations: 
       required:
         - _id
@@ -1074,11 +1087,21 @@ components:
           x-skaffolder-id-attr: 5f2787e1612fa03a2846a3b9
           x-skaffolder-type: Number
           x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 10
+            - 12
+            - 15
+            - 3
+            - 5
+            - 7
         status:
           type: string
           x-skaffolder-id-attr: 5f2787e1612fa03a2846a3ba
           x-skaffolder-type: String
           x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - Active
+            - Inactive
       x-skaffolder-relations: 
       required:
         - _id

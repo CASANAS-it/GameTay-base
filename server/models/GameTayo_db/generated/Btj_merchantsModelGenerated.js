@@ -59,11 +59,13 @@ const generatedModel = {
       },
       percentage: {
         type: "Number", 
-        required: true
+        required: true,
+        enum: ["10", "12", "15", "3", "5", "7"], 
       },
       status: {
         type: "String", 
-        required: true
+        required: true,
+        enum: ["Active", "Inactive"], 
       },
       // RELATIONS
       

@@ -39,15 +39,18 @@ const generatedModel = {
       },
       no_of_picks: {
         type: "Number", 
-        required: true
+        required: true,
+        enum: ["2", "3", "4"], 
       },
       status: {
         type: "String", 
-        required: true
+        required: true,
+        enum: ["Active", "Inactive"], 
       },
       transtype: {
         type: "String", 
-        required: true
+        required: true,
+        enum: ["2D", "PAIR", "QUADRO", "STL", "SWER3"], 
       },
       // RELATIONS
       
