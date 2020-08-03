@@ -1,0 +1,1316 @@
+openapi: 3.0.0
+info:
+  x-skaffolder-id-project: 5f278467612fa03a2846a287
+  title: GameTayo
+  description: You can obtain JWT token from login API
+  version: 0.1
+servers:
+  - url: http://localhost:3000/api
+    description: Local server for testing
+paths:
+  /login:
+    post:
+      x-skaffolder-ignore: true
+      summary: Login API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              example:
+                username: admin
+                password: 62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /verifyToken:
+    post:
+      x-skaffolder-ignore: true
+      summary: Verify token API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /changePassword:
+    post:
+      x-skaffolder-ignore: true
+      summary: Change password API
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                passwordNew:
+                  type: string
+                passwordOld:
+                  type: string
+      responses:
+        "200":
+          description: OK
+  "/user/{id}/changePassword":
+    post:
+      x-skaffolder-id: 5f278467612fa03a2846a299
+      x-skaffolder-name: changePassword
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: 
+      x-skaffolder-crudType: 
+      x-skaffolder-description: Change password of user from admin
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: object
+      x-skaffolder-url: /{id}/changePassword
+      x-skaffolder-roles:
+        - 5f278467612fa03a2846a293
+      summary: Change password of user from admin
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+  /user:
+    post:
+      x-skaffolder-id: 5f278467612fa03a2846a29a
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mail:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+                roles:
+                  type: string
+                surname:
+                  type: string
+                username:
+                  type: string
+    get:
+      x-skaffolder-id: 5f278467612fa03a2846a296
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  "/user/{id}":
+    delete:
+      x-skaffolder-id: 5f278467612fa03a2846a297
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f278467612fa03a2846a294
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    post:
+      x-skaffolder-id: 5f278467612fa03a2846a295
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f278467612fa03a2846a291
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+  /btj_draws:
+    post:
+      x-skaffolder-id: 5f278a8d612fa03a2846a3f4
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-resource: btj_draws
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - btj_draws
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_draws"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                allocated_percentage:
+                  type: number
+                amount:
+                  type: number
+                draw_date:
+                  type: integer
+                draw_result:
+                  type: string
+                game_type:
+                  type: string
+                merchant_percentage:
+                  type: number
+    get:
+      x-skaffolder-id: 5f278a8d612fa03a2846a3f9
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-resource: btj_draws
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - btj_draws
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/btj_draws"
+  "/btj_draws/{id}":
+    delete:
+      x-skaffolder-id: 5f278a8d612fa03a2846a3f8
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-resource: btj_draws
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - btj_draws
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f278a8d612fa03a2846a3f3
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-resource: btj_draws
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - btj_draws
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_draws"
+    post:
+      x-skaffolder-id: 5f278a8d612fa03a2846a3f2
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-resource: btj_draws
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - btj_draws
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_draws"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/btj_draws"
+  /btj_game_settings:
+    post:
+      x-skaffolder-id: 5f278a6f612fa03a2846a3e8
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-resource: btj_game_settings
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - btj_game_settings
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_game_settings"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amt_per_unit:
+                  type: number
+                no_of_picks:
+                  type: integer
+                status:
+                  type: string
+                transtype:
+                  type: string
+    get:
+      x-skaffolder-id: 5f278a6f612fa03a2846a3ef
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-resource: btj_game_settings
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - btj_game_settings
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/btj_game_settings"
+  "/btj_game_settings/{id}":
+    delete:
+      x-skaffolder-id: 5f278a6f612fa03a2846a3ee
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-resource: btj_game_settings
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - btj_game_settings
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f278a6f612fa03a2846a3ea
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-resource: btj_game_settings
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - btj_game_settings
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_game_settings"
+    post:
+      x-skaffolder-id: 5f278a6f612fa03a2846a3e9
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-resource: btj_game_settings
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - btj_game_settings
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_game_settings"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/btj_game_settings"
+  /ntj_merchants:
+    post:
+      x-skaffolder-id: 5f278aca612fa03a2846a3fe
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-resource: btj_merchants
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - btj_merchants
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_merchants"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                creation_date:
+                  type: integer
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                middle_initial:
+                  type: string
+                mobilenum:
+                  type: string
+                percentage:
+                  type: number
+                status:
+                  type: string
+    get:
+      x-skaffolder-id: 5f278aca612fa03a2846a402
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-resource: btj_merchants
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - btj_merchants
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/btj_merchants"
+  "/ntj_merchants/{id}":
+    delete:
+      x-skaffolder-id: 5f278aca612fa03a2846a403
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-resource: btj_merchants
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - btj_merchants
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f278aca612fa03a2846a3fc
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-resource: btj_merchants
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - btj_merchants
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_merchants"
+    post:
+      x-skaffolder-id: 5f278aca612fa03a2846a3ff
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-resource: btj_merchants
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - btj_merchants
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_merchants"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/btj_merchants"
+  /btj_transactions_all:
+    post:
+      x-skaffolder-id: 5f278a63612fa03a2846a3e0
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-resource: btj_transactions_all
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - btj_transactions_all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_transactions_all"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                lastupdate:
+                  type: integer
+                lucky:
+                  type: boolean
+                merchant_code:
+                  type: string
+                mobilenum:
+                  type: string
+                pickno_1:
+                  type: number
+                pickno_2:
+                  type: number
+                pickno_3:
+                  type: number
+                pickno_4:
+                  type: number
+                refnum:
+                  type: string
+                status:
+                  type: string
+                transbody:
+                  type: string
+                transdate:
+                  type: integer
+                transtype:
+                  type: string
+    get:
+      x-skaffolder-id: 5f278a63612fa03a2846a3e5
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-resource: btj_transactions_all
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - btj_transactions_all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/btj_transactions_all"
+  "/btj_transactions_all/{id}":
+    delete:
+      x-skaffolder-id: 5f278a63612fa03a2846a3e4
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-resource: btj_transactions_all
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - btj_transactions_all
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f278a63612fa03a2846a3e1
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-resource: btj_transactions_all
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - btj_transactions_all
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_transactions_all"
+    post:
+      x-skaffolder-id: 5f278a63612fa03a2846a3de
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-resource: btj_transactions_all
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - btj_transactions_all
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/btj_transactions_all"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/btj_transactions_all"
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      x-skaffolder-id: 5f278467612fa03a2846a291
+      x-skaffolder-id-db: 5f278467612fa03a2846a288
+      x-skaffolder-id-entity: 5f278467612fa03a2846a289
+      x-skaffolder-url: /user
+      x-skaffolder-type: User
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        mail:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28c
+          x-skaffolder-type: String
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28d
+          x-skaffolder-type: String
+        password:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28b
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        roles:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28f
+          x-skaffolder-type: String
+          x-skaffolder-enumeration:
+            - ADMIN
+            - MERCHANT
+            - PUBLIC
+            - SUPERUSER
+        surname:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28e
+          x-skaffolder-type: String
+        username:
+          type: string
+          x-skaffolder-id-attr: 5f278467612fa03a2846a28a
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - password
+        - username
+    btj_draws:
+      x-skaffolder-id: 5f278960612fa03a2846a3db
+      x-skaffolder-id-db: 5f278467612fa03a2846a288
+      x-skaffolder-id-entity: 5f278960612fa03a2846a3d4
+      x-skaffolder-url: /btj_draws
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        allocated_percentage:
+          type: number
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3d8
+          x-skaffolder-type: Number
+        amount:
+          type: number
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3da
+          x-skaffolder-type: Number
+        draw_date:
+          type: integer
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3d5
+          x-skaffolder-type: Date
+        draw_result:
+          type: string
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3d6
+          x-skaffolder-type: String
+        game_type:
+          type: string
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3d7
+          x-skaffolder-type: String
+        merchant_percentage:
+          type: number
+          x-skaffolder-id-attr: 5f278960612fa03a2846a3d9
+          x-skaffolder-type: Number
+      x-skaffolder-relations: 
+      required:
+        - _id
+    btj_game_settings:
+      x-skaffolder-id: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-id-db: 5f278467612fa03a2846a288
+      x-skaffolder-id-entity: 5f2786ab612fa03a2846a3ac
+      x-skaffolder-url: /btj_game_settings
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        amt_per_unit:
+          type: number
+          x-skaffolder-id-attr: 5f2786ab612fa03a2846a3b0
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        no_of_picks:
+          type: integer
+          x-skaffolder-id-attr: 5f2786ab612fa03a2846a3af
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 2
+            - 3
+            - 4
+        status:
+          type: string
+          x-skaffolder-id-attr: 5f2786ab612fa03a2846a3ae
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - Active
+            - Inactive
+        transtype:
+          type: string
+          x-skaffolder-id-attr: 5f2786ab612fa03a2846a3ad
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 2D
+            - PAIR
+            - QUADRO
+            - STL
+            - SWER3
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - amt_per_unit
+        - no_of_picks
+        - status
+        - transtype
+    btj_merchants:
+      x-skaffolder-id: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-id-db: 5f278467612fa03a2846a288
+      x-skaffolder-id-entity: 5f2787e1612fa03a2846a3b6
+      x-skaffolder-url: /ntj_merchants
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        code:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3bb
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-unique: true
+        creation_date:
+          type: integer
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3b7
+          x-skaffolder-type: Date
+          x-skaffolder-required: true
+        first_name:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3bc
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        last_name:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3bd
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        middle_initial:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3be
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        mobilenum:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3b8
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        percentage:
+          type: number
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3b9
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - 10
+            - 12
+            - 15
+            - 3
+            - 5
+            - 7
+        status:
+          type: string
+          x-skaffolder-id-attr: 5f2787e1612fa03a2846a3ba
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-enumeration:
+            - Active
+            - Inactive
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - code
+        - creation_date
+        - first_name
+        - last_name
+        - middle_initial
+        - mobilenum
+        - percentage
+        - status
+    btj_transactions_all:
+      x-skaffolder-id: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-id-db: 5f278467612fa03a2846a288
+      x-skaffolder-id-entity: 5f2785e5612fa03a2846a393
+      x-skaffolder-url: /btj_transactions_all
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        amount:
+          type: number
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39b
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        lastupdate:
+          type: integer
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a399
+          x-skaffolder-type: Date
+        lucky:
+          type: boolean
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a3a1
+          x-skaffolder-type: Boolean
+        merchant_code:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a3a0
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        mobilenum:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39a
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        pickno_1:
+          type: number
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39c
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        pickno_2:
+          type: number
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39d
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        pickno_3:
+          type: number
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39e
+          x-skaffolder-type: Number
+        pickno_4:
+          type: number
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a39f
+          x-skaffolder-type: Number
+        refnum:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a394
+          x-skaffolder-type: String
+        status:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a398
+          x-skaffolder-type: String
+        transbody:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a397
+          x-skaffolder-type: String
+        transdate:
+          type: integer
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a395
+          x-skaffolder-type: Date
+        transtype:
+          type: string
+          x-skaffolder-id-attr: 5f2785e5612fa03a2846a396
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - amount
+        - merchant_code
+        - mobilenum
+        - pickno_1
+        - pickno_2
+        - transtype
+  x-skaffolder-db:
+    - x-skaffolder-id: 5f278467612fa03a2846a288
+      x-skaffolder-name: GameTayo_db
+  x-skaffolder-page:
+    - x-skaffolder-id: 5f278467612fa03a2846a290
+      x-skaffolder-name: Home
+      x-skaffolder-url: /home
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5f278a63612fa03a2846a3e3
+        - 5f278a6f612fa03a2846a3ed
+        - 5f278a8d612fa03a2846a3f7
+        - 5f278aca612fa03a2846a401
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a8d612fa03a2846a3f1
+      x-skaffolder-name: btj_drawsEdit
+      x-skaffolder-url: /btj_drawses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-services:
+        - 5f278a8d612fa03a2846a3f4
+        - 5f278a8d612fa03a2846a3f2
+        - 5f278a8d612fa03a2846a3f3
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a8d612fa03a2846a3f7
+      x-skaffolder-name: btj_drawsList
+      x-skaffolder-url: /btj_drawses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5f278960612fa03a2846a3db
+      x-skaffolder-services:
+        - 5f278a8d612fa03a2846a3f8
+        - 5f278a8d612fa03a2846a3f9
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5f278a8d612fa03a2846a3f1
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a6f612fa03a2846a3e7
+      x-skaffolder-name: btj_game_settingsEdit
+      x-skaffolder-url: /btj_game_settingses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-services:
+        - 5f278a6f612fa03a2846a3e8
+        - 5f278a6f612fa03a2846a3e9
+        - 5f278a6f612fa03a2846a3ea
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a6f612fa03a2846a3ed
+      x-skaffolder-name: btj_game_settingsList
+      x-skaffolder-url: /btj_game_settingses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5f2786ab612fa03a2846a3b1
+      x-skaffolder-services:
+        - 5f278a6f612fa03a2846a3ee
+        - 5f278a6f612fa03a2846a3ef
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5f278a6f612fa03a2846a3e7
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278aca612fa03a2846a3fb
+      x-skaffolder-name: btj_merchantsEdit
+      x-skaffolder-url: /btj_merchantses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-services:
+        - 5f278aca612fa03a2846a3fe
+        - 5f278aca612fa03a2846a3ff
+        - 5f278aca612fa03a2846a3fc
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278aca612fa03a2846a401
+      x-skaffolder-name: btj_merchantsList
+      x-skaffolder-url: /btj_merchantses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5f2787e1612fa03a2846a3c7
+      x-skaffolder-services:
+        - 5f278aca612fa03a2846a403
+        - 5f278aca612fa03a2846a402
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5f278aca612fa03a2846a3fb
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a63612fa03a2846a3dd
+      x-skaffolder-name: btj_transactions_allEdit
+      x-skaffolder-url: /btj_transactions_alls/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-services:
+        - 5f278a63612fa03a2846a3e0
+        - 5f278a63612fa03a2846a3de
+        - 5f278a63612fa03a2846a3e1
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f278a63612fa03a2846a3e3
+      x-skaffolder-name: btj_transactions_allList
+      x-skaffolder-url: /btj_transactions_alls
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5f2785e5612fa03a2846a3a2
+      x-skaffolder-services:
+        - 5f278a63612fa03a2846a3e4
+        - 5f278a63612fa03a2846a3e5
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5f278a63612fa03a2846a3dd
+      x-skaffolder-roles: []
+  x-skaffolder-roles: 
+    - x-skaffolder-id: 5f278467612fa03a2846a293
+      x-skaffolder-name: ADMIN
