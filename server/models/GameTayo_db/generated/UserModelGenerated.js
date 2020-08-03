@@ -44,8 +44,7 @@ const generatedModel = {
         required: true
       },
       roles: [{
-        type: "String",
-        enum: ["ADMIN", "MERCHANT", "PUBLIC", "SUPERUSER"], 
+        type: "String"
       }],
       surname: {
         type: "String"
